@@ -1,37 +1,26 @@
 1+2)
-
 martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ git checkout main
 Вже в «main»
 Ваша гілка актуалізована з «origin/main».
 martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ git checkout -b homework1
-
 Перейшов до нової гілки «homework1»
-
 martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ touch untracked_file.txt
 martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ git status
 На гілці homework1
-
 Невідстежувані файли:
   (використовуйте «git add <file>...» щоб долучити те, що повинно бути збережено в коміті)
-  
 marta_test/
-
 untracked_file.txt
-
 немає змін, доданих у коміт, але існують невідстежувані файли (використовуйте  «git add» щоб додати файли для відстежування)
-
 martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ git add untracked_file.txt
 martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ git status
-
 На гілці homework1
 Зміни, що мають бути збережені в коміті
   (use "git restore --staged <file>..." to unstage)
 новий файл:    untracked_file.txt
-
 Невідстежувані файли:
   (використовуйте «git add <file>...» щоб долучити те, що повинно бути збережено в коміті)
 marta_test/
-
 martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ git commit -m "added untracked_file.txt"
 [homework1 917ce3a] added untracked_file.txt
  1 file changed, 0 insertions(+), 0 deletions(-)
@@ -39,73 +28,51 @@ martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ git commit -m "added un
 martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ git --soft HEAD~1
 martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ git reset --soft HEAD~1
 martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ git status
-
 На гілці homework1
 Зміни, що мають бути збережені в коміті
   (use "git restore --staged <file>..." to unstage)
 новий файл:    untracked_file.txt
-
 Невідстежувані файли:
   (використовуйте «git add <file>...» щоб долучити те, що повинно бути збережено в коміті)
 marta_test/
-
 martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ git restore --staged untracked_file.txt
 martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ git status
-
 На гілці homework1
 Невідстежувані файли:
   (використовуйте «git add <file>...» щоб долучити те, що повинно бути збережено в коміті)
 marta_test/
 untracked_file.txt
-
 немає змін, доданих у коміт, але існують невідстежувані файли (використовуйте  «git add» щоб додати файли для відстежування)
 
-
-
 3) 
-
 martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ git checkout main
-
 Перейшов до гілки «main»
 Ваша гілка актуалізована з «origin/main».
-
 martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ git checkout homework1
 Перейшов до гілки «homework1»
-
 martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ git status
-
 На гілці homework1
 Невідстежувані файли:
   (використовуйте «git add <file>...» щоб долучити те, що повинно бути збережено в коміті)
 	marta_test/
 	untracked_file.txt
-
 немає змін, доданих у коміт, але існують невідстежувані файли (використовуйте  «git add» щоб додати файли для відстежування)
-
 martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ git add untracked_file.txt
-
 martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ git commit -m "add untracked_file.txt"
-
 [homework1 cfbe170] add untracked_file.txt
  1 file changed, 0 insertions(+), 0 deletions(-)
  create mode 100644 untracked_file.txt
- 
 martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ git rm --cached untracked_file.txt
-
 rm 'untracked_file.txt'
-
 martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ git commit -m "remove untracked_file.txt file"
-
 [homework1 ffeba08] remove untracked_file.txt file
  1 file changed, 0 insertions(+), 0 deletions(-)
  delete mode 100644 untracked_file.txt
 martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ git status
-
 На гілці homework1
 Невідстежувані файли:
   (використовуйте «git add <file>...» щоб долучити те, що повинно бути збережено в коміті)
 	marta_test/
 	untracked_file.txt
-
 немає змін, доданих у коміт, але існують невідстежувані файли (використовуйте  «git add» щоб додати файли для відстежування)
 martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$
