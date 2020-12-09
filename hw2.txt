@@ -1,0 +1,66 @@
+martavirtual@martavirtual-VirtualBox:~$ cd gl_basecamp_2020
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ git checkout main
+----Вже в «main»----
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ git checkout -b style
+----Перейшов до нової гілки «style»----
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ git status
+----На гілці style----
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ touch marta_test/style.css
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ git add marta_test/style.css
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ git commit -m "Add css styles"
+[style e266a1a] Add css styles
+ 1 file changed, 3 insertions(+)
+ create mode 100644 marta_test/style.css
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ git add marta_test/hello.html
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ git commit -m " style.css"[style 7404e1a]  style.css
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ git add index.html
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ git commit -m "Create index.html"
+[style a4d155c] Create index.html
+ 1 file changed, 8 insertions(+)
+ create mode 100644 index.html
+----На гілці style----
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ git checkout style
+----На гілці style----
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ cat marta_test/hello.html
+<html>
+  <head>
+    <link type="text/css" rel="stylesheet" media="all" href="style.css" />
+  </head>
+  <body>
+    <h1>Hello, World!</h1>
+  </body>
+</html>
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ git checkout main
+----Перейшов до гілки main----
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ touch README
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ git add README
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ git commit -m "Add README"
+----На гілці main----
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ git checkout style
+	hello.html
+----Перейшов до гілки style----
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ git merge main
+----Вже актуальне.Злиття відбулось рекурсивно----
+README |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+ create mode 100644 README
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ git checkout main
+	hello.html
+----Перейшов до гілки «main»----
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ git add marta_test/hello.html
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ git commit -m 'Life is great!'
+----Остання зміна в main конфліктує з деякими змінами в style----
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ git checkout style
+----Перейшов до гілки style----
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ git merge main
+----Вже актуальне----
+Auto-merging marta_test/hello.html
+CONFLICT (content): Merge conflict in marta_test/hello.html
+ Автоматичне злиття провалено ; Bиріште конфлікти.
+git add marta_test/hello.html
+git commit -m "Merged main fixed conflict"
+git add marta_test/hello.html
+$ git commit -m "Merged main fixed conflict"
+[style 645c4e6] Merged main fixed conflict.
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ 
