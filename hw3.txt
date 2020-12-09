@@ -1,0 +1,83 @@
+-----1.Create path ~/f1/f2/f3/f4/f5/f6; Create and fill in text file in f1 folder; Copy it to f6 fold-----
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ mkdir -p f1/f2/f3/f4/f5/f6
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ nano f1/f1.txt f1/f2/f3/f4/f5/f6
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ iname f1.txt
+find: ‘iname’: Немає такого файла або каталогу
+find: ‘f1.txt’: Немає такого файла або каталогу
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ cp f1/f1.txt f1/f2/f3/f4/f5/f6
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ find ~ -iname f1.txt
+/home/martavirtual/gl_basecamp_2020/f1/f2/f3/f4/f5/f6/f1.txt
+/home/martavirtual/gl_basecamp_2020/f1/f1.txt
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ rm
+rm: відсутній операнд
+Спробуйте 'rm --help' для одержання додаткової інформації.
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ rm f1/f2/f3/f4/f5/f6/f1.txt
+-----2.Redirect errors only output into separate file-----
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ git checkout marta_test
+error: pathspec 'marta_test' did not match any file(s) known to git
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ ls
+f1  marta_test  README.md  untracked_file.txt
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020$ cd marta_test
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020/marta_test$ ls sdf>test.txt
+ls: не вдалося отримати доступ до 'sdf': Немає такого файла або каталогу
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020/marta_test$ ls sdf>test.txt
+ls: не вдалося отримати доступ до 'sdf': Немає такого файла або каталогу
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020/marta_test$ ls sdf 2>test.txt
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020/marta_test$ cat sdf 2>>test.txt
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020/marta_test$ cat test.txt
+ls: не вдалося отримати доступ до 'sdf': Немає такого файла або каталогу
+cat: sdf: Немає такого файла або каталогу
+-----3.Redirect error and standart outputs into separate file-----
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020/marta_test$ 
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020/marta_test$ cat pwd.sh sdf>f2.txt 2>&1
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020/marta_test$ cat f2.txt
+cat: pwd.sh: Немає такого файла або каталогу
+cat: sdf: Немає такого файла або каталогу
+-----4.Create file, change owner to root. Add permissions to execute file-----
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020/
+marta_test$ touch f3.txt
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020/marta_test$ sudo chown root f3.txt
+[sudo] пароль до martavirtual: 
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020/marta_test$ ls -la
+загалом 32
+drwxrwxr-x 3 martavirtual martavirtual  4096 гру  9 01:55 .
+drwxrwxr-x 6 martavirtual martavirtual  4096 гру  9 01:38 ..
+-rw-rw-r-- 1 martavirtual martavirtual   141 гру  9 01:46 f2.txt
+-rw-rw-r-- 1 root         martavirtual     0 гру  9 01:55 f3.txt
+drwxrwxr-x 7 martavirtual martavirtual  4096 гру  8 12:18 .git
+-rw------- 1 martavirtual martavirtual 12288 гру  8 13:04 .swp
+-rw-rw-r-- 1 martavirtual martavirtual   194 гру  9 01:42 test.txt
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020/marta_test$ sudo chmod +x f3.txt
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020/marta_test$ ls -la
+загалом 32
+drwxrwxr-x 3 martavirtual martavirtual  4096 гру  9 01:55 .
+drwxrwxr-x 6 martavirtual martavirtual  4096 гру  9 01:38 ..
+-rw-rw-r-- 1 martavirtual martavirtual   141 гру  9 01:46 f2.txt
+-rw-rw-r-- 1 root         martavirtual     0 гру  9 01:55 f3.txt
+drwxrwxr-x 7 martavirtual martavirtual  4096 гру  8 12:18 .git
+-rw------- 1 martavirtual martavirtual 12288 гру  8 13:04 .swp
+-rw-rw-r-- 1 martavirtual martavirtual   194 гру  9 01:42 test.txt
+-----5.make cmd2 executes only if cmd1 fails-----
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020/marta_test$ apt-got || echo "Oops cmd1 isn't successful"
+
+Команду «apt-got» не знайдено, ви мали на увазі:
+
+  команда «apt-get» з deb apt (2.0.2ubuntu0.1)
+
+Спробуйте: sudo apt install <назва deb>
+
+Oops cmd1 isn't successful
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020/marta_test$ cat sdf || "Something went  wrong"cat: sdf: Немає такого файла або каталогу
+Something went  wrong: команду не знайдено
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020/marta_test$ cat sdf || echo "Oops cmd1 isn't successful"
+cat: sdf: Немає такого файла або каталогу
+Oops cmd1 is't successful
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020/marta_test$ 
+-----6.make cmd2 executes only if cmd1 successful-----
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020/marta_test$ date && echo "Oops cmd1 isn't successful"
+середа, 9 грудня 2020 02:15:05 +0200
+Oops cmd1 is't successful
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020/marta_test$ 
+7.
+martavirtual@martavirtual-VirtualBox:~/gl_basecamp_2020/marta_test$ 
+
